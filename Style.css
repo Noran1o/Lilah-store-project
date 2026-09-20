@@ -1,0 +1,715 @@
+/* =========================================================
+   Lilah - custom styles on top of Bootstrap 5
+   Bootstrap handles layout (grid, navbar, spacing, flex).
+   This file only keeps what makes YOUR design unique.
+   ========================================================= */
+
+/* ---------- Colors (change them here, they update everywhere) ---------- */
+:root {
+    --lilah-bg: #dbdad9;
+    --lilah-nav: #e7e0d8;
+    --lilah-light: #f2eeea;
+    --lilah-newsletter: #e4ddd3;
+    --lilah-sand: #ddd3c5;
+    --lilah-sand-dark: #d8c8b8;
+    --lilah-text: #2f2b26;
+    --lilah-muted: #777;
+    --lilah-taupe: #8f7d6c;
+    --lilah-accent: #b98e59;
+    --lilah-accent-dark: #8a653f;
+}
+
+/* Dark mode: Bootstrap 5.3 switches with data-bs-theme="dark" on <html> */
+[data-bs-theme="dark"] {
+    --lilah-bg: #1b1b1b;
+    --lilah-nav: #242424;
+    --lilah-light: #242424;
+    --lilah-newsletter: #242424;
+    --lilah-sand: #2e2e2e;
+    --lilah-sand-dark: #383838;
+    --lilah-text: #f2eeea;
+    --lilah-muted: #a9a198;
+}
+
+/* The navbar is sticky, so anchors must stop a bit lower */
+html {
+    scroll-padding-top: 76px;
+}
+
+body {
+    background-color: var(--lilah-bg);
+    color: var(--lilah-text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ---------- Reusable helpers ---------- */
+.img-zoom {
+    overflow: hidden;
+}
+.img-zoom img {
+    transition: transform 0.4s;
+}
+.img-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* ---------- Buttons (custom Bootstrap button variants) ---------- */
+.btn-lilah-dark {
+    --bs-btn-color: #efece6;
+    --bs-btn-bg: #2f2b26;
+    --bs-btn-border-color: #2f2b26;
+    --bs-btn-hover-color: var(--lilah-accent);
+    --bs-btn-hover-bg: #2f2b26;
+    --bs-btn-hover-border-color: #2f2b26;
+    --bs-btn-active-color: var(--lilah-accent);
+    --bs-btn-active-bg: #2f2b26;
+    --bs-btn-active-border-color: #2f2b26;
+    transition: 0.3s;
+}
+.btn-lilah-dark:hover {
+    transform: scale(1.03);
+}
+
+.btn-lilah-taupe {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--lilah-taupe);
+    --bs-btn-border-color: var(--lilah-taupe);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--lilah-accent);
+    --bs-btn-hover-border-color: var(--lilah-accent);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--lilah-accent);
+    --bs-btn-active-border-color: var(--lilah-accent);
+    transition: 0.3s;
+}
+
+.btn-lilah-sand {
+    --bs-btn-color: var(--lilah-text);
+    --bs-btn-bg: var(--lilah-sand);
+    --bs-btn-border-color: var(--lilah-sand);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--lilah-accent);
+    --bs-btn-hover-border-color: var(--lilah-accent);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--lilah-accent);
+    --bs-btn-active-border-color: var(--lilah-accent);
+    padding: 1rem 1.8rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.btn-lilah-sand:hover {
+    transform: scale(1.08);
+}
+
+/* ---------- Navbar ---------- */
+.lilah-navbar {
+    background-color: var(--lilah-nav);
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+.lilah-navbar.scrolled {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+}
+.logo {
+    color: var(--lilah-text);
+    font-family: serif;
+    font-size: 2.6rem;
+    line-height: 1;
+}
+.navbar-nav .nav-link {
+    color: var(--lilah-text);
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+.navbar-nav .nav-link:hover {
+    color: var(--lilah-accent);
+    transform: translateY(-2px);
+}
+/* The link of the section you are viewing (set by Bootstrap Scrollspy) */
+.navbar-nav .nav-link.active {
+    color: var(--lilah-accent);
+    box-shadow: inset 0 -2px 0 var(--lilah-accent);
+}
+.navbar-toggler {
+    border: 0;
+    color: var(--lilah-text);
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+.search {
+    background-color: transparent;
+    border-color: #c5c2bc;
+    color: var(--lilah-text);
+    min-width: 200px;
+}
+
+/* ---------- "Collection" dropdown in the navbar ---------- */
+.has-submenu {
+    position: relative;
+}
+.has-submenu .dropdown-menu {
+    --bs-dropdown-bg: var(--lilah-light);
+    --bs-dropdown-color: var(--lilah-text);
+    --bs-dropdown-border-color: var(--lilah-sand-dark);
+    --bs-dropdown-link-color: var(--lilah-text);
+    --bs-dropdown-link-hover-color: var(--lilah-accent);
+    --bs-dropdown-link-hover-bg: var(--lilah-sand);
+    --bs-dropdown-link-active-color: var(--lilah-accent);
+    --bs-dropdown-link-active-bg: var(--lilah-sand);
+    --bs-dropdown-divider-bg: var(--lilah-sand-dark);
+    --bs-dropdown-min-width: 11rem;
+    --bs-dropdown-item-padding-x: 1.1rem;
+    --bs-dropdown-item-padding-y: 0.5rem;
+    letter-spacing: 0.5px;
+}
+.has-submenu .dropdown-item {
+    font-size: 0.95rem;
+}
+
+/* Desktop: the menu opens when the mouse is over "COLLECTION" */
+@media (min-width: 992px) {
+    .navbar-nav .nav-link {
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+    .has-submenu > .nav-link::after {
+        content: "\25BE";
+        font-size: 0.7em;
+        margin-left: 0.35rem;
+    }
+    .has-submenu .dropdown-menu {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+    }
+    .has-submenu:hover > .dropdown-menu,
+    .has-submenu:focus-within > .dropdown-menu {
+        display: block;
+    }
+    .has-submenu.submenu-off > .dropdown-menu {
+        display: none !important;
+    }
+}
+
+/* Mobile: the categories are simply listed under "COLLECTION" */
+@media (max-width: 991.98px) {
+    .has-submenu .dropdown-menu {
+        display: block;
+        position: static;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        padding: 0 0 0.5rem 1rem;
+    }
+}
+
+/* ---------- Navbar icon buttons (wishlist, cart, dark mode) ---------- */
+.icon-btn {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--lilah-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+.icon-btn:hover {
+    background-color: rgba(185, 142, 89, 0.18);
+    color: var(--lilah-accent);
+}
+.icon-btn:focus-visible {
+    outline: 2px solid var(--lilah-accent);
+    outline-offset: 2px;
+}
+.icon-badge {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background: var(--lilah-accent);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-badge.d-none {
+    display: none !important;
+}
+
+/* Dark mode button: show the moon in light mode, the sun in dark mode */
+.icon-sun {
+    display: none;
+}
+[data-bs-theme="dark"] .icon-moon {
+    display: none;
+}
+[data-bs-theme="dark"] .icon-sun {
+    display: block;
+}
+#darkModeBtn svg {
+    animation: iconSwap 0.45s ease;
+}
+@keyframes iconSwap {
+    from { transform: rotate(-90deg) scale(0.4); opacity: 0; }
+    to   { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    min-height: 550px;
+    background-image: url("images/alexandre-valdivia--Zs-r29klio-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.75rem);
+    margin-bottom: 1.25rem;
+}
+.btn-hero {
+    min-width: 210px;
+    padding: 1.1rem 1.5rem;
+    background-color: var(--lilah-light);
+    color: #333;
+    border: none;
+    letter-spacing: 2px;
+    font-size: 0.875rem;
+    transition: 0.3s;
+}
+.btn-hero:hover {
+    background-color: var(--lilah-accent);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* ---------- Section headings (shared) ---------- */
+.section-title,
+.collection-title,
+.category-title {
+    font-size: 0.8rem;
+    color: var(--lilah-muted);
+    margin-bottom: 0.6rem;
+}
+.products-section h2,
+.collection-content h2,
+.category-head,
+.lookbook h2,
+.newsletter h2 {
+    color: var(--lilah-text);
+}
+.products-section h2 { font-size: 2.2rem; }
+
+/* ---------- Filter chips + sort ---------- */
+.filter-chip {
+    border: 1px solid var(--lilah-taupe);
+    color: var(--lilah-text);
+    background: transparent;
+    padding: 0.35rem 1.1rem;
+    transition: 0.3s;
+}
+.filter-chip:hover {
+    border-color: var(--lilah-accent);
+    color: var(--lilah-accent);
+}
+.filter-chip.active {
+    background-color: var(--lilah-text);
+    border-color: var(--lilah-text);
+    color: var(--lilah-bg);
+}
+.sort-select {
+    width: auto;
+    min-width: 170px;
+    border-color: var(--lilah-taupe);
+    background-color: transparent;
+    color: var(--lilah-text);
+}
+
+/* ---------- Product card (Option A) ---------- */
+.product-img-wrap {
+    position: relative;
+}
+.product-img-wrap img {
+    width: 100%;
+    aspect-ratio: 4 / 5;      /* same shape for every photo */
+    object-fit: cover;
+}
+.product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    background: #2f2b26;
+    color: #f2eeea;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    padding: 3px 9px;
+    border-radius: 3px;
+}
+.product-badge.sale {
+    background: var(--lilah-accent);
+    color: #fff;
+}
+.wish-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: var(--lilah-light);
+    color: var(--lilah-text);
+    font-size: 1.1rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.wish-btn:hover {
+    transform: scale(1.1);
+}
+.wish-btn.active {
+    color: #c0392b;
+}
+.product .card-title {
+    color: var(--lilah-text);
+    transition: 0.3s;
+}
+.product .card-title:hover {
+    color: var(--lilah-accent);
+}
+.product .card-text {
+    color: var(--lilah-text);
+    margin-bottom: 0.75rem;
+}
+.old-price {
+    text-decoration: line-through;
+    color: var(--lilah-muted);
+    margin-right: 6px;
+}
+.add-btn {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* ---------- Collection ---------- */
+.collection {
+    background-color: var(--lilah-nav);
+}
+.collection-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+.collection-content h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin: 1.25rem 0;
+}
+.collection-content {
+    padding-left: 0;
+}
+@media (min-width: 992px) {
+    .collection-content { padding-left: 8rem !important; }
+}
+.description {
+    color: var(--lilah-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* ---------- Category ---------- */
+.category-section {
+    background-color: var(--lilah-light);
+}
+.category-head {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+.category img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+.category:hover img {
+    transform: scale(1.06);
+}
+.category-info {
+    background-color: var(--lilah-sand);
+    padding: 1.25rem;
+    color: var(--lilah-text);
+    transition: 0.3s;
+}
+.category:hover .category-info {
+    background-color: var(--lilah-sand-dark);
+}
+.category-info p {
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.category:hover .category-info p {
+    color: var(--lilah-accent-dark);
+    transform: scale(1.04);
+}
+.category-info span {
+    font-size: 1.25rem;
+    transition: 0.3s;
+}
+.category:hover .category-info span {
+    transform: translateX(10px);
+}
+
+/* ---------- Lookbook ---------- */
+.lookbook {
+    background-color: var(--lilah-light);
+}
+.lookbook-title {
+    font-size: 0.8rem;
+    color: var(--lilah-accent-dark);
+    letter-spacing: 2px;
+    margin-bottom: 0.6rem;
+}
+.lookbook h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+
+/* Pictures are buttons that open the gallery */
+.lookbook-open {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    border-radius: 3px;
+    cursor: zoom-in;
+}
+.lookbook-open:focus-visible {
+    outline: 2px solid var(--lilah-accent);
+    outline-offset: 3px;
+}
+.lookbook-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+}
+.lookbook-main  { height: 320px; }
+.lookbook-small { height: 220px; }
+@media (min-width: 768px) {
+    .lookbook-main  { height: 580px; }
+    .lookbook-small { height: 282px; }
+}
+.lookbook-season {
+    font-size: 0.8rem;
+    color: var(--lilah-accent-dark);
+    letter-spacing: 3px;
+    margin: 2.2rem 0 0.75rem;
+}
+.lookbook-description {
+    font-size: 1.1rem;
+    color: var(--lilah-muted);
+    margin-bottom: 1.5rem;
+}
+.btn-lookbook {
+    padding: 1rem 1.8rem;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+}
+.btn-lookbook:hover {
+    transform: scale(1.08);
+}
+
+/* Gallery (modal + carousel) */
+.lookbook-modal .modal-content {
+    position: relative;
+    background-color: #141414;
+    border: 0;
+}
+.lookbook-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 5;
+}
+.lookbook-modal .carousel-item img {
+    width: 100%;
+    height: 72vh;
+    object-fit: contain;
+}
+@media (min-width: 768px) {
+    .lookbook-modal .carousel-item img { height: 82vh; }
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter {
+    background-color: var(--lilah-newsletter);
+}
+.newsletter-small {
+    font-size: 0.7rem;
+    color: #806f5d;
+    margin-bottom: 0.6rem;
+}
+.newsletter h2 { font-size: 2rem; }
+.newsletter-text {
+    font-size: 0.9rem;
+    color: var(--lilah-muted);
+    margin-bottom: 1.8rem;
+}
+.newsletter-form {
+    max-width: 460px;
+}
+.newsletter-form .form-control {
+    background-color: #f7f4ef;
+    color: #2f2b26;
+    border-color: #aaa;
+    border-radius: 0;
+}
+.newsletter-form .btn {
+    border-radius: 0;
+}
+.newsletter-form .invalid-feedback {
+    text-align: left;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    background-color: #2f2b26;
+    color: #f4f0eb;
+}
+.footer-logo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.footer-text,
+.footer-list,
+.footer-list a {
+    color: #cfc7bd;
+    font-size: 0.9rem;
+}
+.footer-text { line-height: 1.7; }
+.footer-heading {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.25rem;
+}
+.footer-list li { margin-bottom: 0.75rem; }
+.footer-list a {
+    text-decoration: none;
+}
+.footer-list a:hover {
+    color: #fff;
+}
+
+.social-icons a {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #8f8173;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #f4f0eb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.social-icons a:hover {
+    background-color: #9a8774;
+    border-color: #9a8774;
+}
+
+.footer-bottom {
+    border-top: 1px solid #5b554e;
+}
+.footer-bottom p,
+.footer-bottom a {
+    color: #a9a198;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+.footer-bottom a {
+    margin-left: 1.25rem;
+}
+.footer-bottom a:first-child {
+    margin-left: 0;
+}
+@media (min-width: 768px) {
+    .footer-bottom a:first-child { margin-left: 1.25rem; }
+}
+
+/* ---------- Cart (Offcanvas) ---------- */
+.offcanvas {
+    background-color: var(--lilah-light);
+    color: var(--lilah-text);
+}
+.cart-thumb {
+    width: 72px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.qty-control {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--lilah-taupe);
+    border-radius: 20px;
+}
+.qty-control button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+.qty-control button:hover {
+    color: var(--lilah-accent);
+}
+.qty-control span {
+    min-width: 24px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.cart-clear {
+    color: var(--lilah-muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+.cart-clear:hover {
+    color: var(--lilah-accent);
+}
+
+/* ---------- Toast (small message) ---------- */
+.lilah-toast {
+    background-color: #2f2b26;
+    color: #f2eeea;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- Back to top ---------- */
+#backToTop {
+    width: 45px;
+    height: 45px;
+    background-color: var(--lilah-taupe);
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0;
+    z-index: 1030;
+}
+#backToTop:hover {
+    background-color: var(--lilah-accent);
+    color: #fff;
+}
